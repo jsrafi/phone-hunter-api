@@ -1,14 +1,18 @@
-const loadData = async(searchText , isShowAll) => 
+const loadData = async(searchText='13' , isShowAll) => 
 {
     const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`);
     const data = await res.json();
     const phone = data.data;
     // console.log(phone)
-    displayPhones(phone , isShowAll)
+    displayPhones(phone , isShowAll )
 }
 
-const displayPhones = (phones , isShowAll) =>
+const displayPhones = (phones , isShowAll ) =>
 {
+    
+    
+    
+
     const cardContainer = document.getElementById('card-container');
     
     // clear phone container cards before adding new cards.
@@ -31,8 +35,11 @@ const displayPhones = (phones , isShowAll) =>
         phones = phones.slice(0,12);
     }
 
+    
+    
 phones.forEach(element => 
   {
+    
    const divCard = document.createElement('div');
    divCard.classList=`card w-96 bg-base-100 shadow-xl`;
    divCard.innerHTML = 
@@ -49,8 +56,11 @@ phones.forEach(element =>
  </div>
    `;
    cardContainer.appendChild(divCard)
-  });
-
+  })
+    
+    
+   
+   
 //   hide loading spinner
 loadingData(false);
 
@@ -121,3 +131,4 @@ const handleShowAll = ()=>
     handleSearch(true);
 }
 
+loadData();
